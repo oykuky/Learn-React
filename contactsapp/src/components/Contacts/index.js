@@ -5,7 +5,10 @@ import { useState } from 'react'
 
 //büyük component
 function Contacts() {
-    const [contacts, setContacts] = useState([]); //iletişim bilgileri için bir dizi state
+    const [contacts, setContacts] = useState([
+      {fullName : 'Öykü', phone_number : '0506456'}, 
+      {fullName : 'Övgü', phone_number : '0554667'} 
+    ]); //iletişim bilgileri için bir dizi state
 
     // Bu hook ile kişilerin güncel durumu yazdırılıyor , 'contacts' dizisi değiştiğinde useEffect içindeki fonk. tetiklenir
     // bileşen her render edildiğinde çalışır 
