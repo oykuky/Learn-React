@@ -14,11 +14,12 @@ function Contacts() {
     useEffect(()=>{
         console.log(contacts)
     },[contacts]);
+
   return (
     <div>
-        <List/>
         <Form addContact={setContacts} contacts = {contacts} />
-        
+        <List listofcontacts = {contacts}/>
+
         {/* form bileşeni yeni kişilerin eklendiği component'dir
         'addContact' propu ile ile yeni kişileri eklemek için kullanılan işlevi 'setContacts' 
         alır ve mevcut listeyi 'contacts' görüntülemek için 'contacts' propunu alır. */}
