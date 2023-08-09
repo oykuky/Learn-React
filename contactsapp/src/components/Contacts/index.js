@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import List from './List'
 import Form from './Form'
 import { useState } from 'react'
+import './style.css'
+
 
 //büyük component
 function Contacts() {
@@ -19,7 +21,8 @@ function Contacts() {
     },[contacts]);
 
   return (
-    <div>
+    <div id='container'>
+      <h2>Contacts App</h2>
         <Form addContact={setContacts} contacts = {contacts} />
         <List listofcontacts = {contacts}/>
 

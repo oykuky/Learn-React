@@ -5,7 +5,7 @@ import Contacts from './components/Contacts';
 
 function App() {
   return (
-    <div className='text-center'>
+    <div className='App'>
       <Contacts/>
     </div>
   )
