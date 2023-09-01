@@ -22,13 +22,6 @@ function Index() {
             </label>
 
             <ul class="todo-list">
-                <li class="completed">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label>Learn JavaScript</label>
-                    <button class="destroy"></button>
-                  </div>
-                </li>
                 <li>
                   <div class="view">
                     <input class="toggle" type="checkbox" />
