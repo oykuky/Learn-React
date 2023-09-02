@@ -18,17 +18,18 @@ function Newtodo({todo ,setTodo}) {
     //  Önceki todo öğesinin tamamlanma durumunu tersine çevirip yeni bir obje oluşturulur
 	const changeCompleted =  (id) => {
 		setTodo(
-		  todo.map((todo) =>
-			todo.id === id ? { ...todo, completed: !todo.completed } : todo
+		  todo.map((todoItem) =>
+			todoItem.id === id ? { ...todoItem, completed: !todoItem.completed } : todoItem
 		  )
 		);
 	  };
 	 // tamamlanmış ögeyi filtreden çıkararak sadece tamamlanmamış öğeleri tutarız
 	const clearAllCompleted = () => {
 		setTodo(todo.filter((todoItem => !todoItem.completed)))
-	}
+	} 
 
 	const [filter,setFilter] = useState('all');
+	// Filtreleme düğmelerine tıklama işlemini yöneten bir işlev 
 	const filterClick = (filter) => {
 		setFilter(filter)
 	}
@@ -47,9 +48,11 @@ function Newtodo({todo ,setTodo}) {
     <ul class = "todo-list"> 
 	{ todo.map((todoItem) => 
 
-    <li className = {`${todoItem.completed ? "completed" : ""}`} style = {{display: filter === 'all' || filter === 'active' && !todoItem.completed || filter === 'completed' && todoItem.completed ? 'block' :'none'}} key={todoItem.id} >
-		 <div class ="view"> <input class="toggle" type="checkbox" checked ={todoItem.completed} onChange={() => changeCompleted(todoItem.id)} /> 
-		 <label>{todoItem.text}</label> <button class="destroy" onClick={() => deleteClick(todoItem.id)}></button> 
+    <li className = {`${todoItem.completed ? "completed" : ""}`} style = {{display: filter === 'all' || (filter === 'active' && !todoItem.completed) || (filter === 'completed' && todoItem.completed) ? 'block' : 'none'}} key={todoItem.id} >
+		 <div class ="view">
+				<input class="toggle" type="checkbox" checked ={todoItem.completed} onChange={() => changeCompleted(todoItem.id)} /> 
+				<label>{todoItem.text}</label> 
+				<button class="destroy" onClick={() => deleteClick(todoItem.id)}></button> 
 		 </div>
 		  </li> 
 		  )}
