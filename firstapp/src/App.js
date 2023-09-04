@@ -7,6 +7,7 @@ import List2 from './components/List2';
 import List1 from './components/List1';
 import User from './components/User';
 import UseEffect from './components/UseEffect';
+import Fetch from './components/Fetch';
 
 
 const nameSur = {
@@ -35,7 +36,10 @@ function App() {
   return (
     
     <div>
-       
+        <div className =  'text-center'>
+        <Fetch />
+        </div>
+        
        {/* state kullanımı */}
       <nav className='m-5 text-center'>
         <h2 className=" text-primary">{name} {surname}</h2>
@@ -90,6 +94,7 @@ function App() {
           <button className='m-5 text-danger' onClick={() => setIsVisible(!isVisible)}>Toggle</button>
           {/* toggle butonu ile componenti kaldırırız görünürlüğü değişir */}
         </Row>
+       
       </Container>
         
     </div>
