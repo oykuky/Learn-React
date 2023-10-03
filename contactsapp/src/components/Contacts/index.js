@@ -3,10 +3,23 @@ import List from './List'
 import Form from './Form'
 import { useState } from 'react'
 import './style.css'
+import {IntlProvider,FormattedMessage} from "react-intl"
+import LangButton from '../LangButton';
 
 
 //büyük component
 function Contacts() {
+  const isLocale = localStorage.getItem('locale');
+  const defaultLocale = isLocale ? isLocale : navigator.language;
+  const [locale,setLocale] = useState(defaultLocale);
+  const message ={
+    'tr-TR':{
+      title1: "Rehber Uygulaması"
+    } ,
+     'en-US' : {
+       title1: "Contacts App"
+   }
+   }
     const [contacts, setContacts] = useState([
       {fullName : 'Öykü', phone_number : '0506456'}, 
       {fullName : 'Övgü', phone_number : '0554667'} 
@@ -18,11 +31,15 @@ function Contacts() {
     //bu yüzden useEffect içine [contacts] bağımlılık dizisini ekliyoruz
     useEffect(()=>{
         console.log(contacts)
-    },[contacts]);
+        localStorage.setItem('locale',locale)
+    },[contacts,locale]);
 
   return (
-    <div id='container'>
-      <h2>Contacts App</h2>
+   <IntlProvider messages={message[locale]}>
+     <div id='container'>
+     <LangButton setLocale={setLocale}/>
+      <FormattedMessage id="title1"/>
+    
         <Form addContact={setContacts} contacts = {contacts} />
         <List listofcontacts = {contacts}/>
 
@@ -30,7 +47,8 @@ function Contacts() {
         'addContact' propu ile ile yeni kişileri eklemek için kullanılan işlevi 'setContacts' 
         alır ve mevcut listeyi 'contacts' görüntülemek için 'contacts' propunu alır. */}
     </div>
-    
+   </IntlProvider>
+   
 
   )
 }
